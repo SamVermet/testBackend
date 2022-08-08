@@ -1,0 +1,30 @@
+h1{
+  color: darkblue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+
+
+}
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a:link, nav a:visited {
+  background-color: #00f00f;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid black;
+}
+
+nav a:hover, nav a.active {
+  background-color: #00a00F;
+  border: 1px dot-dot-dash black;
+}
