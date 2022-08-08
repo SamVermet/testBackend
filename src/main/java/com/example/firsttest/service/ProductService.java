@@ -19,7 +19,7 @@ public class ProductService {
     }
 
     public List<Product> getProducts() {
-        // return productList;
+//         return productList;
         return this.productRepository.findAll();
     }
 
@@ -38,21 +38,11 @@ public class ProductService {
         return this.productRepository.save(product);
     }
 
-    public Product getProductsById(String id) {
-        for (Product pr : productList) {
-            if (pr.getId().equals(id)) {
-                return pr;
-            }
-        }
-        return null;
-    }
-
-//    public List<Product> deleteProducts(ObjectId id) {
-//        this.productRepository.delete(id);
-//        return null;
-//    }
-
     public List<Product> getProductsByType(String type) {
         return this.productRepository.findAllByType(type);
+    }
+
+    public void deleteProducts(ObjectId id) {
+        this.productRepository.deleteById(id);
     }
 }
