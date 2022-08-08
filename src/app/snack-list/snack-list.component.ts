@@ -29,4 +29,7 @@ export class SnackListComponent implements OnInit {
       }
     );
   }
+  public deleteProducts({id}: { id: any }): void{
+    this.productService.deleteProducts(id)
+  }
 }

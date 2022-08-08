@@ -29,4 +29,10 @@ export class DrinksListComponent implements OnInit {
     );
   }
 
+  public deleteProducts(id: string): void {
+    this.productService.deleteProducts(id).subscribe((response) => {
+      console.log('Whoop')
+    });
+  }
+
 }
