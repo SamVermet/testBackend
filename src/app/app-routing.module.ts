@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {DrinksListComponent} from "./drinks-list/drinks-list.component";
-import {SnackListComponent} from "./snack-list/snack-list.component";
 import {PagenotfoundComponent} from "./pagenotfound/pagenotfound.component";
-import {TestComponent} from "./test/test.component";
+import {MenuComponent} from "./menu/menu.component";
+import {CategoriesComponent} from "./categories/categories.component";
+
 
 const routes: Routes = [
-  {path: '', redirectTo:'/snacks', pathMatch: 'full'},
-  {path: 'drinks', component: DrinksListComponent},
-  {path: 'snacks', component: SnackListComponent},
-  {path: 'test',component:TestComponent},
+  {path: '', redirectTo:'/menu', pathMatch: 'full'},
+  {path: 'menu', component: MenuComponent},
+  {path: 'categories', component: CategoriesComponent},
   {path: '**', component: PagenotfoundComponent}
 ];
 
@@ -18,4 +17,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingCompontents = [DrinksListComponent, SnackListComponent, PagenotfoundComponent]
+export const routingCompontents = [MenuComponent, CategoriesComponent, PagenotfoundComponent]

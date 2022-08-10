@@ -10,12 +10,16 @@
   <title>Document</title>
 </head>
 <body>
-<h1>Menu</h1>
+<h1>Restaurant</h1>
 <nav>
-  <a routerLink="/snacks" routerLinkActive="active">Snacks</a>
-  <a routerLink="/drinks" routerLinkActive="active">Drinks</a>
-  <a routerLink="/test" routerLinkActive="active">Testing</a>
+  <a routerLink="/menu" routerLinkActive="active">Menu</a>
+  <a routerLink="/categories" routerLinkActive="active">Categories</a>
 </nav>
+<!--
+<nav *ngFor="link">
+  <a routerLink="/variable routerLinkActive="active">"Variable"</a>
+</nav>
+-->
 </body>
 </html>
 <router-outlet></router-outlet>
