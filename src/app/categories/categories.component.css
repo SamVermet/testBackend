@@ -1,0 +1,75 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table td, th {
+  justify-content: center;
+  align-items: center;
+  background: #e5e5ff;
+  color: darkcyan;
+  padding: 5px;
+  margin-left: 35px;
+  border: 1px solid #aaaaff;
+}
+
+.blueButton {
+  justify-content: center;
+
+  background: #e5e5ff;
+  color: darkcyan;
+  padding: 7px;
+  border: 1px solid #aaaaff;
+  cursor: pointer;
+  margin-right: 2px;
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  padding: 20px 30px;
+  background: #00b0a0;
+  border-radius: 10px;
+  transition: top 0ms ease-in-out 200ms,
+  opacity 200ms ease-in-out 0ms,
+  transform 20ms ease-in-out 0ms;
+
+}
+
+.popup.active {
+  top: 50%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: top 0ms ease-in-out 0ms,
+  opacity 200ms ease-in-out 0ms,
+  transform 20ms ease-in-out 0ms;
+}
+
+.popup .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 15px;
+  height: 15px;
+  background: darkcyan;
+  color: red;
+  text-align: center;
+  line-height: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.popup input {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.pop-button {
+  margin-left: 5px;
+  cursor: pointer;
+}

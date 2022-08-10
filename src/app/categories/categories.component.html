@@ -1,0 +1,19 @@
+<input type="button" value="Refresh" (click)="this.getTypes();">
+<input type="button" value="add" (click)="togglePopOn()">
+<div class="popup" id="popupNew">
+  <form (submit)="addType()">
+    <div class="close-btn" (click)="togglePopOff()">&times;</div>
+    <input type="text" required name="newType" [(ngModel)]="newType">
+    <input class="pop-button" type="button" value="add" (click)="addType()">
+  </form>
+</div>
+<table>
+  <tr>
+    <th>Types:</th>
+  </tr>
+  <tr *ngFor="let types of types">
+    <td>{{types.type}}</td>
+    <input class="blueButton" type="button" value="Edit">
+    <input class="blueButton" (click)="deleteTypes({id : types.id})" type="button" value="Delete">
+  </tr>
+</table>
