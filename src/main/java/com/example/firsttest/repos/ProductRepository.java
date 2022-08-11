@@ -11,7 +11,10 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends MongoRepository<Product, ObjectId> {
 
-    List<Product> findAllByType(String type);
+    List<Product> findAllByTypeId(String type);
+
+    void deleteAllByTypeId(String typeId);
+
 
 //    Product delete(ObjectId id);
 }

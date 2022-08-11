@@ -21,6 +21,8 @@ public class ProductService {
     public List<Product> getProducts() {
 //         return productList;
         return this.productRepository.findAll();
+
+
     }
 
     public Product createProducts(Product product) {
@@ -38,11 +40,19 @@ public class ProductService {
         return this.productRepository.save(product);
     }
 
-    public List<Product> getProductsByType(String type) {
-        return this.productRepository.findAllByType(type);
+    public List<Product> getProductsByType(String typeId) {
+        return this.productRepository.findAllByTypeId(typeId);
     }
 
     public void deleteProducts(ObjectId id) {
         this.productRepository.deleteById(id);
+    }
+
+    public void deleteAllProductsByTypeId(String typeId) {
+        this.productRepository.deleteAllByTypeId(typeId);
+    }
+
+    public Product getProductsById(ObjectId id) {
+        return this.productRepository.findById(id).get();
     }
 }
