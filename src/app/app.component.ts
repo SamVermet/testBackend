@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Products} from "./products";
+import {Products} from "./pages/productgroups/products";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {ProductService} from "./product.service";
 
@@ -8,9 +8,8 @@ import {ProductService} from "./product.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'routing-app';
-  public products: Products[] | undefined;
 
 
 
@@ -19,5 +18,5 @@ export class AppComponent implements OnInit{
   }
 
 
-  }
+}
 

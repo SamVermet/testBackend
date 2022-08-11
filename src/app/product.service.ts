@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from 'rxjs';
-import {Products} from "./products";
+import {Products} from "./pages/productgroups/products";
 import {environment} from "../environments/environment";
 
 @Injectable({
@@ -13,12 +13,11 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  public getDrinks(): Observable<Products[]> {
-    return this.http.get<Products[]>(`${this.apiServerUrl}/products/drink`);
-  }
-
-  public getSnacks(): Observable<Products[]> {
-    return this.http.get<Products[]>(`${this.apiServerUrl}/products/snack`);
+  // public getProductsByTypeId(typeId:string): Observable<Products[]> {
+  //   return this.http.get<Products[]>(`${this.apiServerUrl}/products/${typeId}`);
+  // }
+  public getProductsByTypeId(typeId:null|string): Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.apiServerUrl}/products/${typeId}`);
   }
 
   public addProducts(product: Products): Observable<Products> {
@@ -29,8 +28,14 @@ export class ProductService {
     return this.http.put<Products>(`${this.apiServerUrl}/products`, product);
   }
 
+  public deleteProductsByTypeId(typeId: string): Observable<Products> {
+    return this.http.delete<Products>(`${this.apiServerUrl}/products/${typeId}`);
+  }
   public deleteProducts(productId: string): Observable<Products> {
-    return this.http.delete<Products>(`${this.apiServerUrl}/products/${productId}`);
+    return this.http.delete<Products>(`${this.apiServerUrl}/products/delete/${productId}`);
   }
 
+  getProductsById(id: string | null) : Observable<Products> {
+    return this.http.get<Products>(`${this.apiServerUrl}/products/get/${id}`);
+  }
 }

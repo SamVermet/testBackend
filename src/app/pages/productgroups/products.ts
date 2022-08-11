@@ -3,4 +3,5 @@ export interface Products {
   name: string;
   price: string;
   type: string;
+  typeId: string | null;
 }
