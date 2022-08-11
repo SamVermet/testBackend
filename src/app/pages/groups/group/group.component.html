@@ -1,0 +1,7 @@
+<br><br><br>
+<div>
+  <label for="type">Group: </label>
+  <input [(ngModel)]="o.type" id="type" placeholder="Edit">
+  <input type="button" value="Save" (click)="edit()" routerLink="/groups">
+  <input type="button" value="Delete" (click)="delete()" routerLink="/groups">
+</div>

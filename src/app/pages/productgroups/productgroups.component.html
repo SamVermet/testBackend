@@ -1,0 +1,3 @@
+<input type="button" *ngFor="let group of list" [routerLink]="group.id" value={{group.type}} (click)="get()">
+
+<router-outlet></router-outlet>

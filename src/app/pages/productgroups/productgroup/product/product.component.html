@@ -1,0 +1,9 @@
+<br><br><br>
+<div>
+  <label for="EditName">Edit name: </label>
+  <input [(ngModel)]="o.name" id="EditName" placeholder="Edit">
+  <label for="EditPrice">Edit Price: </label>
+  <input [(ngModel)]="o.price" id="EditPrice" placeholder="Edit">
+  <input type="button" value="Save" (click)="edit()" routerLink="../">
+
+</div>

@@ -1,0 +1,5 @@
+<input type="button" value="Update" (click)="get()"><br>
+<input type="button" *ngFor="let group of list" [routerLink]="group.id" value ={{group.type}}>
+<input [(ngModel)]="AddNew" id="add" placeholder="Add new group">
+<input type="button" value="Add" (click)="add()">
+<router-outlet></router-outlet>

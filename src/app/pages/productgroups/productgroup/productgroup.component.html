@@ -1,0 +1,24 @@
+<br><br><br>
+<!--<input type="button" *ngFor="let products of list" [routerLink]="products.id" value ={{products.name}} (click)="get()">-->
+
+
+<table>
+  <tr>
+    <th>Products:</th>
+    <th>Price:</th>
+    <th><input class="blueButton" value="Refresh" type="button" (click)="get()"></th>
+  </tr>
+  <tr *ngFor="let products of list">
+    <td>{{products.name}}</td>
+    <td>{{products.price}}</td>
+    <input class="blueButton" type="button" value="Edit" [routerLink]="products.id">
+    <input class="blueButton" type="button" value="Delete" (click)="delProduct(products.id, products.type)">
+  </tr>
+  <label for="addName">Add name: </label>
+  <input [(ngModel)]="AddNewName" type="text" id="addName" placeholder="Add new Product">
+  <label for="addPrice">Add price: </label>
+  <input [(ngModel)]="AddNewPrice" type="text" id="addPrice" placeholder="Add new Product price">
+  <input class="blueButton" type="button" value="Add new" (click)="add()">
+</table>
+<router-outlet></router-outlet>
+
