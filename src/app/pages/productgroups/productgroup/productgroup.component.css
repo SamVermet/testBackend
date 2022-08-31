@@ -12,17 +12,22 @@ table td, th {
   padding: 5px;
   margin-left: 35px;
   border: 1px solid #aaaaff;
+
 }
 
 .blueButton {
   justify-content: center;
-
+  display: compact;
+  width: 100%;
+  align-items: center;
   background: #e5e5ff;
   color: darkcyan;
   padding: 7px;
   border: 1px solid #aaaaff;
   cursor: pointer;
   margin-right: 2px;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 .blueButton th {

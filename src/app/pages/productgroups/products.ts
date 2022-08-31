@@ -4,4 +4,5 @@ export interface Products {
   price: string;
   type: string;
   typeId: string | null;
+  stores: any;
 }

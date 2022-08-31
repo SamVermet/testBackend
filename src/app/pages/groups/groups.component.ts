@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Types} from "./types";
 import {TypeService} from "./type.service";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-groups',
@@ -8,12 +9,14 @@ import {TypeService} from "./type.service";
   styleUrls: ['./groups.component.css']
 })
 export class GroupsComponent implements OnInit {
-
+  addForm = this.formBuilder.group({
+    groups: ['', [Validators.required, Validators.minLength(4)]],
+  })
   list: undefined | Types[];
-  AddNew!: string;
 
   constructor(
-    private typeService: TypeService
+    private typeService: TypeService,
+  private formBuilder: FormBuilder,
   ) {
   }
 
@@ -27,16 +30,18 @@ export class GroupsComponent implements OnInit {
     })
   }
 
+
   public add() {
-    if (this.AddNew != '') {
-      let type = ({
-        type: this.AddNew,
+    if (this.addForm.valid) {
+      let type = {
+        type: this.addForm.value.groups,
         id: ''
-      });
+      };
       this.typeService.addTypes(type).subscribe();
+
     }
-    document.getElementById(this.AddNew = '')
     this.get();
+
   }
 
 }

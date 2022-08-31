@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Products} from "../products";
 import {TypeService} from "../../groups/type.service";
 import {Types} from "../../groups/types";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-productgroup',
@@ -11,21 +12,24 @@ import {Types} from "../../groups/types";
   styleUrls: ['./productgroup.component.css']
 })
 export class ProductgroupComponent implements OnInit {
-
+//form for adding new products
+  addProdForm = this.formBuilder.group({
+    'name': ['', [Validators.required, Validators.minLength(4)]],
+    'price': ['', [Validators.required, Validators.minLength(2)]],
+  })
 
   list: undefined | Products[];
-  id: null | string = null;
-  AddNewName: string = '';
-  AddNewPrice: string = '';
+  id: string;
+
   Type!: string;
-  // @ts-ignore
-  o: Types
+  o: Types;
 
   constructor(
     private productService: ProductService,
     private typeService: TypeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
   ) {
   }
 
@@ -33,41 +37,42 @@ export class ProductgroupComponent implements OnInit {
   ngOnInit(): void {
     this.list = [];
     this.get();
-    this.typeService.getType(this.id).subscribe((result) => {
-      this.o = result;
-    });
-  }
 
+  }
+//get all products within the selected group
   public get() {
 
     this.route.paramMap.subscribe((route) => {
       this.id = route.get('group')
       this.productService.getProductsByTypeId(this.id).subscribe((result) => {
         this.list = result;
+        this.typeService.getType(this.id).subscribe((result) => {
+          this.o = result;
+        })
       })
     })
   }
 
-
+//delete a product (using delete button)
   public delProduct(id: string, type: string) {
     this.productService.deleteProducts(id).subscribe();
     this.Type = type;
     this.get();
   }
-
+// add a new product
   public add() {
-    if (this.AddNewName != '' && this.AddNewPrice != '') {
+    if (this.addProdForm.valid) {
       let Product = ({
         id: '',
-        name: this.AddNewName,
-        price: this.AddNewPrice,
+        name: this.addProdForm.value.name,
+        price: this.addProdForm.value.price,
         type: this.o.type,
-        typeId: this.id
+        typeId: this.id,
+        stores: []
       });
       this.productService.addProducts(Product).subscribe();
-      document.getElementById(this.AddNewPrice = '')
-      document.getElementById(this.AddNewName = '')
     }
     this.get();
   }
+
 }

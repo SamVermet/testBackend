@@ -1,9 +1,27 @@
-<br><br><br>
-<div>
+<br>
+<form [formGroup]="editProdForm" (ngSubmit)="edit()">
   <label for="EditName">Edit name: </label>
-  <input [(ngModel)]="o.name" id="EditName" placeholder="Edit">
+  <input id="EditName" placeholder="Edit" formControlName="name" class="form-control" required minlength="4">
   <label for="EditPrice">Edit Price: </label>
-  <input [(ngModel)]="o.price" id="EditPrice" placeholder="Edit">
-  <input type="button" value="Save" (click)="edit()" routerLink="../">
+  <input id="EditPrice" placeholder="Edit" formControlName="price" class="form-control" required minlength="2">
 
-</div>
+  <h4>Stores:</h4>
+  <table>
+    <tr>
+      <th>Store:</th>
+      <th>Address</th>
+    </tr>
+  <tr formArrayName="stores" *ngFor="let store of editProdForm.get('stores')['controls']; let i=index;">
+<!--    <label for="store-{{ i }}">Store:</label>-->
+    <td><input id="store-{{ i }}" type="text" [formControlName]="i" class="form-control" value=""></td>
+<!--    <label for="address-{{i+1}}">Address:</label>-->
+<!--    <td><input id="address-{{i}}" type="text" [formControlName]="i" class="form-control" value=""></td>-->
+  </tr>
+  </table>
+  <input type="button" (click)="addStore()" value="add a store">
+  <input type="button" (click)="delStore()" value="reset">
+  <input type="submit" value="Save" [disabled]="this.editProdForm.invalid">
+  <p id="saved"></p>
+</form>
+<p>Status: {{editProdForm.value |json}}</p>
+

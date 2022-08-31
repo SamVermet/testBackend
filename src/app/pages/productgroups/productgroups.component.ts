@@ -23,7 +23,7 @@ export class ProductgroupsComponent implements OnInit {
     this.list = [];
     this.get();
   }
-
+//get list of groups
   public get() {
     this.typeService.getTypes().subscribe((result) => {
       this.list = result;

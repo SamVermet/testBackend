@@ -1,7 +1,7 @@
 <br><br><br>
-<div>
+<form [formGroup]="editForm" (ngSubmit)="edit()">
   <label for="type">Group: </label>
-  <input [(ngModel)]="o.type" id="type" placeholder="Edit">
-  <input type="button" value="Save" (click)="edit()" routerLink="/groups">
+  <input id="type" placeholder="Edit" formControlName="type" class="form-control" required minlength="4">
+  <input type="submit" value="Save" [disabled]="this.editForm.invalid">
   <input type="button" value="Delete" (click)="delete()" routerLink="/groups">
-</div>
+</form>
